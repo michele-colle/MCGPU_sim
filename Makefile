@@ -37,9 +37,9 @@ PROG = MC-GPU_v1.5b.x
 # Include and library paths:
 CUDA_PATH = /usr/local/cuda/include/
 CUDA_LIB_PATH = /usr/local/cuda/lib64/
-CUDA_SDK_PATH = /usr/local/cuda/samples/common/inc/
-CUDA_SDK_LIB_PATH = /usr/local/cuda/samples/common/lib/linux/x86_64/
-OPENMPI_PATH = /usr/include/openmpi
+CUDA_SDK_PATH = $(HOME)/cuda-samples/Common/
+CUDA_SDK_LIB_PATH = $(HOME)/cuda-samples/Common/lib/x64/
+OPENMPI_PATH = /usr/lib/x86_64-linux-gnu/openmpi/include/
 
 
 # Compiler's flags:

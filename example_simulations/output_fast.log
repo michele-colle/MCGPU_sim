@@ -1,0 +1,100 @@
+          >> MPI run (myId=0, numprocs=1) on processor "michele" (time: 10:03:11) <<
+              -- Time spent initializing the MPI world (MPI_Barrier): 0.027 s
+
+
+     *****************************************************************************
+     ***     MC-GPU, version 1.5b_DBT (https://github.com/DIDSR/VICTRE_MCGPU)  ***
+     ***                              (http://code.google.com/p/mcgpu/)        ***
+     ***                                                                       ***
+     ***  A. Badal and A. Badano, "Accelerating Monte Carlo simulations of     *** 
+     ***  photon transport in a voxelized geometry using a massively parallel  *** 
+     ***  Graphics Processing Unit", Medical Physics 36, pp. 4878–4880 (2009)  ***
+     ***                                                                       ***
+     ***                     Andreu Badal (Andreu.Badal-Soler{at}fda.hhs.gov)  ***
+     *****************************************************************************
+
+****** Code execution started on: Wed Nov 26 10:03:11 2025
+
+
+
+             *** CUDA SIMULATION IN THE GPU ***
+
+    -- INITIALIZATION phase:
+
+    -- Reading the input file 'MC-GPU_v1.5b_scattered_phantom_mammo_fast.in':
+       Input Euler angles to rotate the source from (0,1,0) to the input direction [deg]: rotZ1=90.000000 , rotY2=-90.000000 , rotZ3=180.000000
+       Material dose deposition tally ENABLED.
+       3D voxel dose deposition tally DISABLED.
+
+       Voxel value to Monte Carlo material number conversion table (material number corresponds to order in input file):
+		voxelId = 0  -->  Material = 1
+		voxelId = 1  -->  Material = 2
+		voxelId = 2  -->  Material = 3
+		voxelId = 29  -->  Material = 4
+		voxelId = 33  -->  Material = 5
+		voxelId = 40  -->  Material = 7
+		voxelId = 50  -->  Material = 11
+		voxelId = 65  -->  Material = 14
+		voxelId = 66  -->  Material = 15
+		voxelId = 88  -->  Material = 6
+		voxelId = 95  -->  Material = 10
+		voxelId = 125  -->  Material = 8
+		voxelId = 150  -->  Material = 9
+		voxelId = 200  -->  Material = 12
+		voxelId = 225  -->  Material = 9
+		voxelId = 250  -->  Material = 13
+
+       Rotations from the detector plane to default detector plane at Y=0 [deg]: rotZ=-180.000000 , rotY=90.000000 , rotZ=-90.000000
+       Array for 4 scatter images correctly allocated (4500000 pixels, 137.329102 Mbytes)
+    -- Reading the energy spectrum and initializing the Walker aliasing sampling algorithm.
+
+    -- Data read from the input file:
+              x-ray tracks to simulate = 3400000000
+                   initial random seed = 55567890
+      NOTE: sampling only upper half of collimated cone beam, with beam offset to edge of the image (eg, mammo).
+      azimuthal (phi), polar apertures = 15.000000 , 11.203000 degrees
+              (max_height_at_y1cm = 0.198060 , max_width_at_y1cm = 0.131653)
+                      source direction = (0.000000, 0.000000, -1.000000)
+                   focal spot position = (0.000010, 6.025000, 63.000000)
+         focal spot Gaussian blur FWHM = 0.030000  (3D Gaussian dist. cropped at 2*sigma)
+              focal spot rotation blur = 0.000000 degrees
+              source-detector distance = 65.000000 cm
+              detector center position = (0.000010, 6.025000, -2.000000)
+      image offset from beam at center = (0.000000, 6.375000)
+              detector layer thickness = 0.020000 cm (=200.00 micron)
+         detector material average MFP = 0.004027 cm
+       detector material K-edge energy = 12658.000000 eV
+         fluorescence energy and yield = 11223.000000 eV , 0.596000
+            MFP at fluorescence energy = 0.005930 cm
+        detector gain and Swank factor = 50.000000 eV/detected_charge, 0.990000 (0.100504 relative std_dev)
+            electronic noise per pixel = 5200.000000 electrons
+              detector cover thickness = 0.100000 cm
+          cover average mean free path = 1.961600 cm
+                Antiscatter grid ratio = 5.000000
+            Antiscatter grid frequency = 31.000000 lines per cm
+      Antiscatter grid strip thickness = 0.006500 cm (=65.00 micron)
+      Computed antiscatter grid height = 0.128790 cm (=1287.90 micron)
+         strips average mean free path = 0.000899 cm
+     interspace average mean free path = 1.961600 cm
+          Antiscatter grid orientation = 0 --> 1D collimated grid with strips perpendicular to lateral direction (mammo style)
+                number of pixels image = 3000x1500 = 4500000
+                            pixel size = 0.00850x0.00850 cm
+                         detector size = 25.50000x12.75000 cm
+                 number of projections = 1
+                     output image file = results/mcgpu_image_22183101_scattered_mammo
+                      input voxel file = phantom/Graff_scattered_22183101.raw.gz
+                 voxel geometry offset = (0.000000, 0.000000, 0.000000) cm
+   size coarse voxels for binary trees = 2 x 2 x 2
+
+                  energy spectrum file = spectrum/W30kVp_Rh50um_Be1mm.spc
+            number of energy bins read = 44
+             minimum, maximum energies = 8.000, 30.000 keV
+                  mean energy spectrum = 19.550 keV
+
+
+    -- Reading binary voxel file in RAW format from file 'phantom/Graff_scattered_22183101.raw.gz':
+       Number of voxels in the geometry file (input file parameter):  1740 x 2415 x 1140 = 4790394000 voxels
+       Voxel size (input file parameter):  0.005000 x 0.005000 x 0.005000 cm  (voxel volume=1.250000e-07 cm^3)
+       Voxel bounding box size:  8.700000 x 12.075000 x 5.700000 cm
+
+    -- Initializing the voxel material composition array:  (18273.902344 Mbytes)...

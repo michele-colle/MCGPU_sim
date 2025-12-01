@@ -1,0 +1,171 @@
+          >> MPI run (myId=0, numprocs=1) on processor "michele" (time: 17:52:57) <<
+              -- Time spent initializing the MPI world (MPI_Barrier): 0.030 s
+
+
+     *****************************************************************************
+     ***     MC-GPU, version 1.5b_DBT (https://github.com/DIDSR/VICTRE_MCGPU)  ***
+     ***                              (http://code.google.com/p/mcgpu/)        ***
+     ***                                                                       ***
+     ***  A. Badal and A. Badano, "Accelerating Monte Carlo simulations of     *** 
+     ***  photon transport in a voxelized geometry using a massively parallel  *** 
+     ***  Graphics Processing Unit", Medical Physics 36, pp. 4878–4880 (2009)  ***
+     ***                                                                       ***
+     ***                     Andreu Badal (Andreu.Badal-Soler{at}fda.hhs.gov)  ***
+     *****************************************************************************
+
+****** Code execution started on: Mon Dec  1 17:52:57 2025
+
+
+
+             *** CUDA SIMULATION IN THE GPU ***
+
+    -- INITIALIZATION phase:
+
+    -- Reading the input file 'MC-GPU_v1.5b_scattered_phantom_mammo_fast.in':
+       Input Euler angles to rotate the source from (0,1,0) to the input direction [deg]: rotZ1=90.000000 , rotY2=-90.000000 , rotZ3=180.000000
+       Material dose deposition tally DISABLED.
+       3D voxel dose deposition tally DISABLED.
+
+       Voxel value to Monte Carlo material number conversion table (material number corresponds to order in input file):
+		voxelId = 0  -->  Material = 1
+		voxelId = 7  -->  Material = 2
+
+       Rotations from the detector plane to default detector plane at Y=0 [deg]: rotZ=-180.000000 , rotY=90.000000 , rotZ=-90.000000
+       Array for 4 scatter images correctly allocated (262144 pixels, 8.000000 Mbytes)
+    -- Reading the energy spectrum and initializing the Walker aliasing sampling algorithm.
+
+    -- Data read from the input file:
+              x-ray tracks to simulate = 34000000000
+                   initial random seed = 55567890
+      NOTE: sampling only upper half of collimated cone beam, with beam offset to edge of the image (eg, mammo).
+      azimuthal (phi), polar apertures = 15.000000 , 11.203000 degrees
+              (max_height_at_y1cm = 0.198060 , max_width_at_y1cm = 0.131653)
+                      source direction = (0.000000, 0.000000, -1.000000)
+                   focal spot position = (0.000010, 6.025000, 63.000000)
+         focal spot Gaussian blur FWHM = 0.000000  (3D Gaussian dist. cropped at 2*sigma)
+              focal spot rotation blur = 0.000000 degrees
+              source-detector distance = 65.000000 cm
+              detector center position = (0.000010, 6.025000, -2.000000)
+      image offset from beam at center = (0.000000, 6.375000)
+              detector layer thickness = 0.020000 cm (=200.00 micron)
+         detector material average MFP = 0.004027 cm
+       detector material K-edge energy = 12658.000000 eV
+         fluorescence energy and yield = 11223.000000 eV , 0.596000
+            MFP at fluorescence energy = 0.005930 cm
+        detector gain and Swank factor = 50.000000 eV/detected_charge, 0.990000 (0.100504 relative std_dev)
+            electronic noise per pixel = 5200.000000 electrons
+              detector cover thickness = 0.100000 cm
+          cover average mean free path = 1.961600 cm
+
+                Antiscatter grid: DISABLED!
+
+                number of pixels image = 512x512 = 262144
+                            pixel size = 0.02490x0.02490 cm
+                         detector size = 12.75000x12.75000 cm
+                 number of projections = 1
+                     output image file = results/muscle_cylinder512x512
+                      input voxel file = phantom/cylinder_muscle_500x500x500.raw.gz
+                 voxel geometry offset = (0.000000, 0.000000, 0.000000) cm
+   size coarse voxels for binary trees = 2 x 2 x 2
+
+                  energy spectrum file = spectrum/W30kVp_Rh50um_Be1mm.spc
+            number of energy bins read = 44
+             minimum, maximum energies = 8.000, 30.000 keV
+                  mean energy spectrum = 19.550 keV
+
+
+    -- Reading binary voxel file in RAW format from file 'phantom/cylinder_muscle_500x500x500.raw.gz':
+       Number of voxels in the geometry file (input file parameter):  500 x 500 x 500 = 125000000 voxels
+       Voxel size (input file parameter):  0.020000 x 0.020000 x 0.020000 cm  (voxel volume=8.000000e-06 cm^3)
+       Voxel bounding box size:  10.000000 x 10.000000 x 10.000000 cm
+
+    -- Initializing the voxel material composition array:  (476.837158 Mbytes)...
+
+       !!bitree!! Creating a binary tree structure to minimize memory use.
+
+    -- Creating low resolution version of the input voxelized geometry, and binary tree structure for every non-uniform coarse voxels...
+  !!bitree!!  Number of low resolution voxels: 15625000
+              Number of non-uniform low resolution voxels converted to binary trees: 31460  (0.201344%)
+              Total number of binary tree nodes stored in memory for all trees: 155
+              Identical non-uniform low resolution voxels merged: 31435  (99.920532%)
+              Longest internal jump among all binary trees (max jump=128): 7
+
+              The geometric parameters 'num_voxels' and 'voxel_size' have been updated to the size of the low res voxel geometry: only the bitree has the original high res information.
+                 voxel_data->num_voxels.x=250 (before: 500) , voxel_data->num_voxels.y=250 (before: 500) , voxel_data->num_voxels.z=250 (before: 500)
+                 voxel_data->voxel_size.x=0.040000 cm (before: 0.020000) , voxel_data->voxel_size.y=0.040000 cm (before: 0.020000) , voxel_data->voxel_size.z=0.040000 cm (before: 0.020000)
+
+       Time spent creating the binary trees and the low res voxel geometry = 0.364 s.
+
+       >> RAM memory allocation: original voxelized geometry = 476.837158 MBytes; low resolution voxelized geometry = 59.604645 MBytes;
+                                 binary tree = 0.000148 MBytes; image vector = 8.000000 MBytes; data structures = 1.469343 Mbytes
+                                 (reduction in memory use with bitree: [low res voxels + binary tree]-[high res voxels] = -417.232361 MBytes = -87.500%)
+
+    -- Reading the material data files (MAX_MATERIALS=15):
+         Mat 1: File 'material/air__5-120keV.mcgpu.gz'
+                Nominal density = 0.001205 g/cm^3; Density used in voxels = 0.001200 g/cm^3
+                Number of energy values in the mean free path database: 23002.
+                Linear interpolation data correctly allocated (8.072601 Mbytes)
+                Lowest energy first bin = 5000.000000 eV, last bin = 120005.000000 eV; bin width = 5.000000 eV
+         Mat 2: File 'material/muscle__5-120keV.mcgpu.gz'
+                Nominal density = 1.050000 g/cm^3; Density used in voxels = 1.050000 g/cm^3
+
+
+  !!WARNING!! The selected GPU number is too high, this device number does not exist!! GPU_id (starting at 0)=10, deviceCount=1
+            Selecting the fastest GPU available using gpuGetMaxGflopsDeviceId(): GPU_id = 0
+
+
+       ==> CUDA (MPI process #0): 1 CUDA enabled GPU detected! Using device #0: "NVIDIA GeForce RTX 2080 Ti"
+                 Compute capability: 7.5, Number multiprocessors: 68
+                 Shared memory per block: 48.00 kbyte, Registers per block: 64.00 kbyte
+                 CUDA Driver Version: 13.0, Runtime Version: 13.0
+
+       ==> CUDA: Constant data successfully copied to the device. CONSTANT memory used: 0.445312 kbytes (0.7%)
+       ==> CUDA: Device global memory correctly allocated. GLOBAL memory used: 77.146922 Mbytes (0.7%)
+       ==> CUDA: Launching kernel to initialize the device image to 0: number of blocks = 2048, threads per block = 128
+                 Time spent allocating and copying memory to the device: 0.014195 s
+
+    -- INITIALIZATION finished: elapsed time = 1.000 s. 
+
+
+
+    -- MONTE CARLO LOOP phase. Time: Mon Dec  1 17:52:58 2025
+
+
+
+
+        ==> CUDA (MPI process #0 in "michele"): Executing 53125 blocks of 128 threads, with 5000 histories in each thread: 34000000000 histories in total (random seed=55567890, num_p=0).
+
+
+          *** IMAGE TALLY PERFORMANCE REPORT ***
+              Simulated x rays:    34000000000
+              Simulation time [s]: 78.32
+              Speed [x-rays/s]:    434089935.49
+
+              Fraction of initial energy arriving at the detector (over the mean energy of the spectrum):  57.919%
+              Maximum energy fluence detected in pixel 8905: (x,y)=(201,17). Maximum pixel value = 80.409413 eV/cm^2 per hist.
+
+       ==> CUDA: Launching kernel to reset the device image to 0: number of blocks = 2048, threads per block = 128
+finished initializationfinished fflushfinished cudaDeviceSynchronizefinished getLastCudaError       ==> CUDA: Time freeing the device memory and ending the GPU threads: 0.006105 s
+        >> MPI thread 0 in "michele" done! (local time: 17:54:16)
+
+
+       ==> CUDA: Time reporting the dose data: 0.000000 s
+
+
+
+    -- SIMULATION FINISHED!
+
+
+       ****** TOTAL SIMULATION PERFORMANCE (including initialization and reporting) ******
+
+          >>> Execution time including initialization, transport and report: 79.355 s.
+          >>> Time spent in the Monte Carlo transport only: 78.325 s.
+          >>> Time spent in initialization, reporting and clean up: 1.030 s.
+          >>> Total number of simulated x rays:  34000000000
+          >>> Total speed (using 1 thread, including transport, initialization and report times) [x-rays/s]:  428454726.87
+          >>> Total speed Monte Carlo transport only (using 1 thread) [x-rays/s]:  434089935.49
+
+
+****** Code execution finished on: Mon Dec  1 17:54:16 2025
+
+

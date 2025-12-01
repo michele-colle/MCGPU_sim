@@ -1184,9 +1184,15 @@ int main(int argc, char **argv)
       int pixels_per_image = detector_data[0].num_pixels.x * detector_data[0].num_pixels.y;
         MAIN_THREAD printf("       ==> CUDA: Launching kernel to reset the device image to 0: number of blocks = %d, threads per block = 128\n", (int)(ceil(pixels_per_image/128.0f)+0.01f) );
         init_image_array_GPU<<<(int)(ceil(pixels_per_image/128.0f)+0.01f),128>>>(image_device, pixels_per_image);
+        MAIN_THREAD printf("finished initialization" );
+
         fflush(stdout);
+        MAIN_THREAD printf("finished fflush" );
         cudaDeviceSynchronize();
+        MAIN_THREAD printf("finished cudaDeviceSynchronize" );
         getLastCudaError("\n\n !!Kernel execution failed initializing the image array!! ");  // Check if kernel execution generated any error:
+        MAIN_THREAD printf("finished getLastCudaError" );
+
     }
     
     
@@ -2892,14 +2898,14 @@ void init_CUDA_device( int* gpu_id, int myID, int numprocs,
   
     //!!MC-GPU_v1.4!! Skip GPUs connected to a monitor, if more GPUs available:
     checkCudaErrors(cudaGetDeviceProperties(&deviceProp, *gpu_id));    
-    if (0!=deviceProp.kernelExecTimeoutEnabled)
-    {
-      if((*gpu_id)<(deviceCount-1))
-      {
-        printf("\n       ==> CUDA: GPU #%d is connected to a display and the CUDA driver would limit the kernel run time. Skipping this GPU!!\n", *gpu_id);
-        *gpu_id = (*gpu_id)+1;
-      }
-    }
+    // if (0!=deviceProp.kernelExecTimeoutEnabled)
+    // {
+    //   if((*gpu_id)<(deviceCount-1))
+    //   {
+    //     printf("\n       ==> CUDA: GPU #%d is connected to a display and the CUDA driver would limit the kernel run time. Skipping this GPU!!\n", *gpu_id);
+    //     *gpu_id = (*gpu_id)+1;
+    //   }
+    // }
   
        
     // Send the processor and GPU id to the following thread, unless we are the last thread:
@@ -2968,19 +2974,19 @@ void init_CUDA_device( int* gpu_id, int myID, int numprocs,
   printf("\n       ==> CUDA: %d CUDA enabled GPU detected! Using device #%d: \"%s\"\n", deviceCount, (*gpu_id), deviceProp.name);    
 #endif
   printf("                 Compute capability: %d.%d, Number multiprocessors: %d\n", deviceProp.major, deviceProp.minor, deviceProp.multiProcessorCount);
-  printf("                 Clock rate: %.2f GHz, Global memory: %.3f Mbyte, Constant memory: %.2f kbyte\n", deviceProp.clockRate*1.0e-6f, deviceProp.totalGlobalMem/(1024.f*1024.f), deviceProp.totalConstMem/1024.f);
+//  printf("                 Clock rate: %.2f GHz, Global memory: %.3f Mbyte, Constant memory: %.2f kbyte\n", deviceProp.clockRate*1.0e-6f, deviceProp.totalGlobalMem/(1024.f*1024.f), deviceProp.totalConstMem/1024.f);
   printf("                 Shared memory per block: %.2f kbyte, Registers per block: %.2f kbyte\n", deviceProp.sharedMemPerBlock/1024.f, deviceProp.regsPerBlock/1024.f);
   int driverVersion = 0, runtimeVersion = 0;  
   cudaDriverGetVersion(&driverVersion);
   cudaRuntimeGetVersion(&runtimeVersion);
   printf("                 CUDA Driver Version: %d.%d, Runtime Version: %d.%d\n\n", driverVersion/1000, driverVersion%100, runtimeVersion/1000, runtimeVersion%100);
 
-  if (0!=deviceProp.kernelExecTimeoutEnabled)
-  {
-    printf("\n\n\n   !!WARNING!! The selected GPU is connected to a display and therefore CUDA driver will limit the kernel run time to 5 seconds and the simulation will likely fail!!\n");
-    printf( "              You can fix this by executing the simulation in a different GPU (select number in the input file) or by turning off the window manager and using the text-only Linux shell.\n\n\n");
-    // exit(-1);
-  }    
+  // if (0!=deviceProp.kernelExecTimeoutEnabled)
+  // {
+  //   printf("\n\n\n   !!WARNING!! The selected GPU is connected to a display and therefore CUDA driver will limit the kernel run time to 5 seconds and the simulation will likely fail!!\n");
+  //   printf( "              You can fix this by executing the simulation in a different GPU (select number in the input file) or by turning off the window manager and using the text-only Linux shell.\n\n\n");
+  //   // exit(-1);
+  // }    
 
   fflush(stdout);
   
@@ -3143,8 +3149,9 @@ int guestimate_GPU_performance(int gpu_id)
   // DISCONTINUED CUDA FUNCTION! float num_cores       = (float) _ConvertSMVer2Cores(deviceProp.major, deviceProp.minor) * deviceProp.multiProcessorCount;
   float num_cores_aprox = 128 * deviceProp.multiProcessorCount;   // I can't get the exact number of cores anymore; assume 128 per multiprocessor
   float comp_capability = (float) deviceProp.major;
-  float frequency       = deviceProp.clockRate*1.0e-6f;
-  
+  int clockRateKHz = 0;
+  cudaDeviceGetAttribute(&clockRateKHz, cudaDevAttrClockRate, gpu_id);
+  float frequency = clockRateKHz * 1.0e-6f;  
   int guestimated_value = (int)(0.5f*num_cores_aprox*frequency*comp_capability + 64.0f);
   return min_value(guestimated_value, 1024);     // Limit the returned number of blocks to prevent too long speed tests   !!DBT!!
 }
