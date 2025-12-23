@@ -1,0 +1,26 @@
+          >> MPI run (myId=0, numprocs=1) on processor "michele" (time: 11:05:12) <<
+              -- Time spent initializing the MPI world (MPI_Barrier): 0.028 s
+
+
+     *****************************************************************************
+     ***     MC-GPU, version 1.5b_DBT (https://github.com/DIDSR/VICTRE_MCGPU)  ***
+     ***                              (http://code.google.com/p/mcgpu/)        ***
+     ***                                                                       ***
+     ***  A. Badal and A. Badano, "Accelerating Monte Carlo simulations of     *** 
+     ***  photon transport in a voxelized geometry using a massively parallel  *** 
+     ***  Graphics Processing Unit", Medical Physics 36, pp. 4878–4880 (2009)  ***
+     ***                                                                       ***
+     ***                     Andreu Badal (Andreu.Badal-Soler{at}fda.hhs.gov)  ***
+     *****************************************************************************
+
+****** Code execution started on: Tue Dec  2 11:05:12 2025
+
+
+
+             *** CUDA SIMULATION IN THE GPU ***
+
+    -- INITIALIZATION phase:
+
+
+   !!read_input ERROR!! Input file not found or not readable. Input file name: 'MC-GPU_v1.5b_scattered_phantom_mammo_fast.in'
+

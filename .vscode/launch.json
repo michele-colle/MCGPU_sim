@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "MC-GPU Simulator (Fast) (Bash Debug)",
+      "type": "bashdb",
+      "request": "launch",
+      "program": "${workspaceFolder}/.vscode/run_simulator.sh",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "terminalKind": "integrated",
+      "pathBash": "/bin/bash",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-          >> MPI run (myId=0, numprocs=1) on processor "michele" (time: 12:34:59) <<
-              -- Time spent initializing the MPI world (MPI_Barrier): 0.030 s
+          >> MPI run (myId=0, numprocs=1) on processor "michele" (time: 10:39:32) <<
+              -- Time spent initializing the MPI world (MPI_Barrier): 0.029 s
 
 
      *****************************************************************************
@@ -13,7 +13,7 @@
      ***                     Andreu Badal (Andreu.Badal-Soler{at}fda.hhs.gov)  ***
      *****************************************************************************
 
-****** Code execution started on: Tue Dec  2 12:34:59 2025
+****** Code execution started on: Tue Dec 23 10:39:32 2025
 
 
 
@@ -21,7 +21,7 @@
 
     -- INITIALIZATION phase:
 
-    -- Reading the input file 'MC-GPU_v1.5b_scattered_phantom_mammo_fast.in':
+    -- Reading the input file 'cbct_circular.in':
        Input Euler angles to rotate the source from (0,1,0) to the input direction [deg]: rotZ1=0.000000 , rotY2=0.000000 , rotZ3=0.000000
        Material dose deposition tally DISABLED.
        3D voxel dose deposition tally DISABLED.
@@ -35,17 +35,17 @@
     -- Reading the energy spectrum and initializing the Walker aliasing sampling algorithm.
 
     -- Data read from the input file:
-              x-ray tracks to simulate = 3400000000
+              x-ray tracks to simulate = 34000000000
                    initial random seed = 55567890
       NOTE: sampling only upper half of collimated cone beam, with beam offset to edge of the image (eg, mammo).
-      azimuthal (phi), polar apertures = 5.861969 , 5.861969 degrees
-              (max_height_at_y1cm = 0.051200 , max_width_at_y1cm = 0.051200)
+      azimuthal (phi), polar apertures = 16.908214 , 16.908214 degrees
+              (max_height_at_y1cm = 0.148632 , max_width_at_y1cm = 0.148632)
                       source direction = (0.000000, 1.000000, 0.000000)
-                   focal spot position = (0.000000, -80.000000, 0.000000)
+                   focal spot position = (0.000000, -57.799999, 0.000000)
          focal spot Gaussian blur FWHM = 0.000000  (3D Gaussian dist. cropped at 2*sigma)
               focal spot rotation blur = 0.000000 degrees
-              source-detector distance = 100.000000 cm
-              detector center position = (0.000000, 20.000000, 0.000000)
+              source-detector distance = 98.699997 cm
+              detector center position = (0.000000, 40.899998, 0.000000)
       image offset from beam at center = (0.000000, 0.000000)
               detector layer thickness = 0.020000 cm (=200.00 micron)
          detector material average MFP = 0.004027 cm
@@ -60,18 +60,18 @@
                 Antiscatter grid: DISABLED!
 
                 number of pixels image = 512x512 = 262144
-                            pixel size = 0.02000x0.02000 cm
-                         detector size = 10.24000x10.24000 cm
+                            pixel size = 0.05730x0.05730 cm
+                         detector size = 29.34000x29.34000 cm
                  number of projections = 1
                      output image file = results/muscle_cylinder512x512x2float
                       input voxel file = phantom/cylinder_muscle_500x500x500.raw.gz
                  voxel geometry offset = (-5.000000, -5.000000, -5.000000) cm
    size coarse voxels for binary trees = 2 x 2 x 2
 
-                  energy spectrum file = spectrum/W30kVp_Rh50um_Be1mm.spc
-            number of energy bins read = 44
-             minimum, maximum energies = 8.000, 30.000 keV
-                  mean energy spectrum = 19.550 keV
+                  energy spectrum file = spectrum/120kV_Al150um_Brass60um.spc
+            number of energy bins read = 230
+             minimum, maximum energies = 5.000, 120.000 keV
+                  mean energy spectrum = 70.324 keV
 
 
     -- Reading binary voxel file in RAW format from file 'phantom/cylinder_muscle_500x500x500.raw.gz':
@@ -94,7 +94,7 @@
                  voxel_data->num_voxels.x=250 (before: 500) , voxel_data->num_voxels.y=250 (before: 500) , voxel_data->num_voxels.z=250 (before: 500)
                  voxel_data->voxel_size.x=0.040000 cm (before: 0.020000) , voxel_data->voxel_size.y=0.040000 cm (before: 0.020000) , voxel_data->voxel_size.z=0.040000 cm (before: 0.020000)
 
-       Time spent creating the binary trees and the low res voxel geometry = 0.366 s.
+       Time spent creating the binary trees and the low res voxel geometry = 0.373 s.
 
        >> RAM memory allocation: original voxelized geometry = 476.837158 MBytes; low resolution voxelized geometry = 59.604645 MBytes;
                                  binary tree = 0.000148 MBytes; image vector = 8.000000 MBytes; data structures = 1.469343 Mbytes
@@ -122,31 +122,31 @@
        ==> CUDA: Constant data successfully copied to the device. CONSTANT memory used: 0.445312 kbytes (0.7%)
        ==> CUDA: Device global memory correctly allocated. GLOBAL memory used: 77.146922 Mbytes (0.7%)
        ==> CUDA: Launching kernel to initialize the device image to 0: number of blocks = 2048, threads per block = 128
-                 Time spent allocating and copying memory to the device: 0.011445 s
+                 Time spent allocating and copying memory to the device: 0.009569 s
 
-    -- INITIALIZATION finished: elapsed time = 0.973 s. 
-
-
-
-    -- MONTE CARLO LOOP phase. Time: Tue Dec  2 12:35:00 2025
+    -- INITIALIZATION finished: elapsed time = 0.996 s. 
 
 
 
+    -- MONTE CARLO LOOP phase. Time: Tue Dec 23 10:39:34 2025
 
-        ==> CUDA (MPI process #0 in "michele"): Executing 5313 blocks of 128 threads, with 5000 histories in each thread: 3400320000 histories in total (random seed=55567890, num_p=0).
+
+
+
+        ==> CUDA (MPI process #0 in "michele"): Executing 53125 blocks of 128 threads, with 5000 histories in each thread: 34000000000 histories in total (random seed=55567890, num_p=0).
 
 
           *** IMAGE TALLY PERFORMANCE REPORT ***
-              Simulated x rays:    3400320000
-              Simulation time [s]: 11.93
-              Speed [x-rays/s]:    284976505.48
+              Simulated x rays:    34000000000
+              Simulation time [s]: 30.96
+              Speed [x-rays/s]:    1098156914.80
 
-              Fraction of initial energy arriving at the detector (over the mean energy of the spectrum):  63.491%
-              Maximum energy fluence detected in pixel 172948: (x,y)=(404,337). Maximum pixel value = 169.264553 eV/cm^2 per hist.
+              Fraction of initial energy arriving at the detector (over the mean energy of the spectrum):  89.649%
+              Maximum energy fluence detected in pixel 144701: (x,y)=(317,282). Maximum pixel value = 78.072541 eV/cm^2 per hist.
 
        ==> CUDA: Launching kernel to reset the device image to 0: number of blocks = 2048, threads per block = 128
-finished initializationfinished fflushfinished cudaDeviceSynchronizefinished getLastCudaError       ==> CUDA: Time freeing the device memory and ending the GPU threads: 0.006168 s
-        >> MPI thread 0 in "michele" done! (local time: 12:35:12)
+finished initializationfinished fflushfinished cudaDeviceSynchronizefinished getLastCudaError       ==> CUDA: Time freeing the device memory and ending the GPU threads: 0.006972 s
+        >> MPI thread 0 in "michele" done! (local time: 10:40:05)
 
 
        ==> CUDA: Time reporting the dose data: 0.000001 s
@@ -158,14 +158,14 @@ finished initializationfinished fflushfinished cudaDeviceSynchronizefinished get
 
        ****** TOTAL SIMULATION PERFORMANCE (including initialization and reporting) ******
 
-          >>> Execution time including initialization, transport and report: 12.933 s.
-          >>> Time spent in the Monte Carlo transport only: 11.932 s.
-          >>> Time spent in initialization, reporting and clean up: 1.001 s.
-          >>> Total number of simulated x rays:  3400320000
-          >>> Total speed (using 1 thread, including transport, initialization and report times) [x-rays/s]:  262914701.18
-          >>> Total speed Monte Carlo transport only (using 1 thread) [x-rays/s]:  284976505.48
+          >>> Execution time including initialization, transport and report: 31.986 s.
+          >>> Time spent in the Monte Carlo transport only: 30.961 s.
+          >>> Time spent in initialization, reporting and clean up: 1.025 s.
+          >>> Total number of simulated x rays:  34000000000
+          >>> Total speed (using 1 thread, including transport, initialization and report times) [x-rays/s]:  1062967340.23
+          >>> Total speed Monte Carlo transport only (using 1 thread) [x-rays/s]:  1098156914.80
 
 
-****** Code execution finished on: Tue Dec  2 12:35:12 2025
+****** Code execution finished on: Tue Dec 23 10:40:05 2025
 
 

@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/colle/mcgpu/VICTRE_MCGPU/Geant4ExtractMaterialData/build",
+  "command": "/usr/bin/g++ -DG4LIB_BUILD_DLL -DG4UI_USE_QT -DG4VIS_USE_RAYTRACERX -DG4VIS_USE_TOOLSSG_QT_GLES -DG4VIS_USE_TOOLSSG_QT_ZB -DG4VIS_USE_TOOLSSG_X11_GLES -DG4VIS_USE_TOOLSSG_X11_ZB -DPTL_BUILD_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -isystem /opt/Geant4/include/Geant4 -isystem /opt/CLHEP/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -g -std=gnu++20 -fPIC -o CMakeFiles/Geant4ExtractMaterialData.dir/main.cpp.o -c /home/colle/mcgpu/VICTRE_MCGPU/Geant4ExtractMaterialData/main.cpp",
+  "file": "/home/colle/mcgpu/VICTRE_MCGPU/Geant4ExtractMaterialData/main.cpp",
+  "output": "CMakeFiles/Geant4ExtractMaterialData.dir/main.cpp.o"
+}
+]

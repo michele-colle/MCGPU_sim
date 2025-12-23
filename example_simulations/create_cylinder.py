@@ -11,7 +11,7 @@ VOLUME_LENGTH = 10.0   # cm (Z dimension)
 # Cylinder dimensions and material
 CYLINDER_RADIUS = 2.0  # cm
 CYLINDER_HEIGHT = 5.0  # cm
-CYLINDER_CENTER_X = 0.0   # cm (0,0,0 = volume center)
+CYLINDER_CENTER_X = 2.0   # cm (0,0,0 = volume center)
 CYLINDER_CENTER_Y = 0.0   # cm
 CYLINDER_CENTER_Z = 0.0   # cm
 
@@ -30,7 +30,7 @@ num_voxels_y = int(np.ceil(VOLUME_HEIGHT / VOXEL_SIZE))
 num_voxels_z = int(np.ceil(VOLUME_LENGTH / VOXEL_SIZE))
 
 # Create output filename with dimensions
-output_filename = f'phantom/cylinder_muscle_{num_voxels_x}x{num_voxels_y}x{num_voxels_z}.raw.gz'
+output_filename = f'phantom/cylinder_muscle_shifted{num_voxels_x}x{num_voxels_y}x{num_voxels_z}.raw.gz'
 os.makedirs(os.path.dirname(output_filename), exist_ok=True)
 
 # Convert cylinder center from physical coordinates to voxel indices
