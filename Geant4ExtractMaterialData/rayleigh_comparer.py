@@ -30,8 +30,8 @@ def plot_comparison(file1, file2):
     plt.legend()
     plt.tight_layout()
     
-    plt.xlim(671,11351)
-    plt.ylim(0.9999990649435871,1.0000000607496007)
+    #plt.xlim(671,11351)
+    #plt.ylim(0.9999990649435871,1.0000000607496007)
     plt.show()
     
     

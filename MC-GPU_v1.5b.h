@@ -57,8 +57,8 @@
 #define  MAX_MATERIALS      15
 
 //! Constants values for the Compton and Rayleigh models:
-#define  MAX_SHELLS         30
-#define  NP_RAYLEIGH       128
+#define  MAX_SHELLS         50
+#define  NP_RAYLEIGH       150
 #define  MAX_ENERGYBINS_RAYLEIGH  25005
 
 //! Maximum number of energy bins in the input x-ray energy spectrum.
