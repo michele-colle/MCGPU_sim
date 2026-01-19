@@ -1,3 +1,5 @@
 example_simulations/results/
 example_simulations/phantom/
 
+phantom/cylinder_muscle_shifted500x500x500.raw.gz
+Geant4ToMCGPU/build/
