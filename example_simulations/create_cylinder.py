@@ -4,14 +4,14 @@ import os
 
 # --- Parameters ---
 # Volume dimensions
-VOLUME_WIDTH = 10.0    # cm (X dimension)
-VOLUME_HEIGHT = 10.0   # cm (Y dimension)
-VOLUME_LENGTH = 10.0   # cm (Z dimension)
+VOLUME_WIDTH = 30.0    # cm (X dimension)
+VOLUME_HEIGHT = 30.0   # cm (Y dimension)
+VOLUME_LENGTH = 30.0   # cm (Z dimension)
 
 # Cylinder dimensions and material
-CYLINDER_RADIUS = 2.0  # cm
-CYLINDER_HEIGHT = 5.0  # cm
-CYLINDER_CENTER_X = 2.0   # cm (0,0,0 = volume center)
+CYLINDER_RADIUS = 5.0  # cm
+CYLINDER_HEIGHT = 15.0  # cm
+CYLINDER_CENTER_X = 0.0   # cm (0,0,0 = volume center)
 CYLINDER_CENTER_Y = 0.0   # cm
 CYLINDER_CENTER_Z = 0.0   # cm
 
