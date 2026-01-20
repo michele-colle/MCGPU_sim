@@ -212,7 +212,7 @@ void PenelopeFilesToMCGPUFiles(const std::vector<std::string>& penelopeMaterialF
     std::filesystem::create_directories(target_folder_relative);
     std::vector<std::string> materialFileIdList;
     materialFileIdList.push_back("material/air__5-120keV.mcgpu density=0.0012 voxelId=0");
-    for(size_t i = 1; i < penelopeMaterialFiles.size(); ++i)
+    for(size_t i = 0; i < penelopeMaterialFiles.size(); ++i)
     {   
         double density = get_penelope_density(penelopeMaterialFiles[i]);
         std::filesystem::path p = penelopeMaterialFiles[i];
@@ -333,8 +333,8 @@ int main()
     std::filesystem::current_path(penelopeDir);
     std::system("ls");
 
-    //PenelopeFilesToMCGPUFiles(G4MaterialToPenelopeFile(GetMaterialsFemale()),"G4_ICRP_female/");
-    //PenelopeFilesToMCGPUFiles(G4MaterialToPenelopeFile(GetMaterialsMale()),"G4_ICRP_male/");
+    PenelopeFilesToMCGPUFiles(G4MaterialToPenelopeFile(GetMaterialsFemale()),"G4_ICRP_female/");
+    PenelopeFilesToMCGPUFiles(G4MaterialToPenelopeFile(GetMaterialsMale()),"G4_ICRP_male/");
     
     auto polyAddress = G4MaterialToPenelopeFile(std::vector<G4Material*>{GetPolyurethaneFoam()})[0];
     std::vector<std::string> penFileList = {"water.mat",

@@ -1,4 +1,5 @@
 material/air__5-120keV.mcgpu density=0.0012 voxelId=0
+material/G4_ICRP_female/icrp_teeth.mcgpu density=2.750000 voxelId=1
 material/G4_ICRP_female/icrp_bone.mcgpu density=1.920000 voxelId=2
 material/G4_ICRP_female/icrp_humeri_upper.mcgpu density=1.185000 voxelId=3
 material/G4_ICRP_female/icrp_humeri_lower.mcgpu density=1.117000 voxelId=4
