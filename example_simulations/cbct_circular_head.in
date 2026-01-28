@@ -9,7 +9,7 @@
 #
 
 #[SECTION SIMULATION CONFIG v.2009-05-12]
-1.0e9                        # Simulating only 1% of the expected mammo exposure for testing!    ORIGINAL HISTORIES:  3.4e11             # TOTAL NUMBER OF HISTORIES, OR SIMULATION TIME IN SECONDS IF VALUE < 100000
+1.0e11                        # Simulating only 1% of the expected mammo exposure for testing!    ORIGINAL HISTORIES:  3.4e11             # TOTAL NUMBER OF HISTORIES, OR SIMULATION TIME IN SECONDS IF VALUE < 100000
 55567891              # RANDOM SEED (ranecu PRNG)
 10                              # GPU NUMBER TO USE WHEN MPI IS NOT USED, OR TO BE AVOIDED IN MPI RUNS
 128                           # GPU THREADS PER CUDA BLOCK (multiple of 32)
@@ -60,15 +60,67 @@ mc-gpu_dose.dat                 # OUTPUT VOXEL DOSE FILE NAME
 250  250                        # VOXEL DOSE ROI: Z-index min max
  
 #[SECTION VOXELIZED GEOMETRY FILE v.2017-07-26]
-phantom/cylinder_water_900x900x900.raw.gz     # VOXEL GEOMETRY FILE (penEasy 2008 format; .gz accepted)
- -9.0    -9.0    -9.0              # OFFSET OF THE VOXEL GEOMETRY (DEFAULT ORIGIN AT LOWER BACK CORNER) [cm]
- 900 900 900                 # NUMBER OF VOXELS: INPUT A 0 TO READ ASCII FORMAT WITH HEADER SECTION, RAW VOXELS WILL BE READ OTHERWISE
- 0.020 0.020 0.020           # VOXEL SIZES [cm]
- 1 1 1                          # SIZE OF LOW RESOLUTION VOXELS THAT WILL BE DESCRIBED BY A BINARY TREE, GIVEN AS POWERS OF TWO (eg, 2 2 3 = 2^2x2^2x2^3 = 128 input voxels per low res voxel; 0 0 0 disables tree)
+phantom/icrp_female_head_material160x137x61.raw     # VOXEL GEOMETRY FILE (penEasy 2008 format; .gz accepted)
+ -7.100  -6.079  -7.381              # OFFSET OF THE VOXEL GEOMETRY [cm]
+ 160 137 61                 # NUMBER OF VOXELS
+ 0.089 0.089 0.242           # VOXEL SIZES [cm]
+ 1 1 1                          # SIZE OF LOW RESOLUTION VOXELS
+# SIZE OF LOW RESOLUTION VOXELS THAT WILL BE DESCRIBED BY A BINARY TREE, GIVEN AS POWERS OF TWO (eg, 2 2 3 = 2^2x2^2x2^3 = 128 input voxels per low res voxel; 0 0 0 disables tree)
  
 #[SECTION MATERIAL FILE LIST v.2020-03-03] #air density=0.0012
-material/icrp_air.mcgpu density=0.00 voxelId=0
-material/Pen_base/icrp_water.mcgpu density=0.998210 voxelId=1
+material/icrp_air.mcgpu density=0.0012 voxelId=0
+material/G4_ICRP_female/icrp_teeth.mcgpu density=2.750000 voxelId=1
+material/G4_ICRP_female/icrp_bone.mcgpu density=1.920000 voxelId=2
+material/G4_ICRP_female/icrp_humeri_upper.mcgpu density=1.185000 voxelId=3
+material/G4_ICRP_female/icrp_humeri_lower.mcgpu density=1.117000 voxelId=4
+material/G4_ICRP_female/icrp_arm_lower.mcgpu density=1.117000 voxelId=5
+material/G4_ICRP_female/icrp_hand.mcgpu density=1.117000 voxelId=6
+material/G4_ICRP_female/icrp_clavicle.mcgpu density=1.191000 voxelId=7
+material/G4_ICRP_female/icrp_cranium.mcgpu density=1.245000 voxelId=8
+material/G4_ICRP_female/icrp_femora_upper.mcgpu density=1.046000 voxelId=9
+material/G4_ICRP_female/icrp_femora_lower.mcgpu density=1.117000 voxelId=10
+material/G4_ICRP_female/icrp_leg_lower.mcgpu density=1.117000 voxelId=11
+material/G4_ICRP_female/icrp_foot.mcgpu density=1.117000 voxelId=12
+material/G4_ICRP_female/icrp_mandible.mcgpu density=1.189000 voxelId=13
+material/G4_ICRP_female/icrp_pelvis.mcgpu density=1.109000 voxelId=14
+material/G4_ICRP_female/icrp_ribs.mcgpu density=1.092000 voxelId=15
+material/G4_ICRP_female/icrp_scapulae.mcgpu density=1.128000 voxelId=16
+material/G4_ICRP_female/icrp_spine_cervical.mcgpu density=1.135000 voxelId=17
+material/G4_ICRP_female/icrp_spine_thoratic.mcgpu density=1.084000 voxelId=18
+material/G4_ICRP_female/icrp_spine_lumbar.mcgpu density=1.171000 voxelId=19
+material/G4_ICRP_female/icrp_sacrum.mcgpu density=1.052000 voxelId=20
+material/G4_ICRP_female/icrp_sternum.mcgpu density=1.076000 voxelId=21
+material/G4_ICRP_female/icrp_hf_upper.mcgpu density=0.980000 voxelId=22
+material/G4_ICRP_female/icrp_hf_lower.mcgpu density=0.980000 voxelId=23
+material/G4_ICRP_female/icrp_med_lowerarm.mcgpu density=0.980000 voxelId=24
+material/G4_ICRP_female/icrp_med_lowerleg.mcgpu density=0.980000 voxelId=25
+material/G4_ICRP_female/icrp_cartilage.mcgpu density=1.100000 voxelId=26
+material/G4_ICRP_female/icrp_skin.mcgpu density=1.090000 voxelId=27
+material/G4_ICRP_female/icrp_blood.mcgpu density=1.060000 voxelId=28
+material/G4_ICRP_female/icrp_muscle.mcgpu density=1.050000 voxelId=29
+material/G4_ICRP_female/icrp_liver.mcgpu density=1.050000 voxelId=30
+material/G4_ICRP_female/icrp_pancreas.mcgpu density=1.050000 voxelId=31
+material/G4_ICRP_female/icrp_brain.mcgpu density=1.050000 voxelId=32
+material/G4_ICRP_female/icrp_heart.mcgpu density=1.050000 voxelId=33
+material/G4_ICRP_female/icrp_eye.mcgpu density=1.050000 voxelId=34
+material/G4_ICRP_female/icrp_kidney.mcgpu density=1.050000 voxelId=35
+material/G4_ICRP_female/icrp_stomach.mcgpu density=1.040000 voxelId=36
+material/G4_ICRP_female/icrp_intestine_sml.mcgpu density=1.040000 voxelId=37
+material/G4_ICRP_female/icrp_intestine_lrg.mcgpu density=1.040000 voxelId=38
+material/G4_ICRP_female/icrp_spleen.mcgpu density=1.040000 voxelId=39
+material/G4_ICRP_female/icrp_thyroid.mcgpu density=1.040000 voxelId=40
+material/G4_ICRP_female/icrp_bladder.mcgpu density=1.040000 voxelId=41
+material/G4_ICRP_female/icrp_ovaries_testes.mcgpu density=1.040000 voxelId=42
+material/G4_ICRP_female/icrp_adrenals.mcgpu density=1.030000 voxelId=43
+material/G4_ICRP_female/icrp_oesophagus.mcgpu density=1.030000 voxelId=44
+material/G4_ICRP_female/icrp_misc.mcgpu density=1.030000 voxelId=45
+material/G4_ICRP_female/icrp_uterus_prostate.mcgpu density=1.030000 voxelId=46
+material/G4_ICRP_female/icrp_lymph.mcgpu density=1.030000 voxelId=47
+material/G4_ICRP_female/icrp_breast_glandular.mcgpu density=1.020000 voxelId=48
+material/G4_ICRP_female/icrp_breast_adipose.mcgpu density=0.950000 voxelId=49
+material/G4_ICRP_female/icrp_lung.mcgpu density=0.385000 voxelId=50
+material/G4_ICRP_female/icrp_gastro_content.mcgpu density=1.040000 voxelId=51
+material/G4_ICRP_female/icrp_urine.mcgpu density=1.040000 voxelId=52
  
 # >>>> END INPUT FILE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  

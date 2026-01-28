@@ -361,7 +361,7 @@
 
 
 // *** Include header file with the structures and functions declarations:
-#include <MC-GPU_v1.5b.h>
+#include "MC-GPU_v1.5b.h"
 
 // *** Include functions to read phantom from binary form:
 #include "load_voxels_binary_VICTRE_v1.5b.c"

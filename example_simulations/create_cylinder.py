@@ -4,9 +4,9 @@ import os
 
 # --- Parameters ---
 # Volume dimensions
-VOLUME_WIDTH = 30.0    # cm (X dimension)
-VOLUME_HEIGHT = 30.0   # cm (Y dimension)
-VOLUME_LENGTH = 30.0   # cm (Z dimension)
+VOLUME_WIDTH = 18.0    # cm (X dimension)
+VOLUME_HEIGHT = 18.0   # cm (Y dimension)
+VOLUME_LENGTH = 18.0   # cm (Z dimension)
 
 # Cylinder dimensions and material
 CYLINDER_RADIUS = 5.0  # cm
@@ -19,7 +19,7 @@ CYLINDER_CENTER_Z = 0.0   # cm
 VOXEL_SIZE = 0.02    # cm (50 microns, matching typical MC-GPU resolution)
 
 # Material IDs (from VICTRE defaults)
-MATERIAL_ID = 7        # 7 = Muscle
+MATERIAL_ID = 1        # 7 = Muscle
 BACKGROUND_ID = 0      # 0 = Air
 OUTPUT_DTYPE = np.uint8
 
@@ -105,13 +105,12 @@ with open(input_snippet_filename, 'w') as f:
     f.write("# Add these lines to your MC-GPU input file:\n\n")
     f.write("#[SECTION VOXELIZED GEOMETRY FILE v.2017-07-26]\n")
     f.write(f"{output_filename}     # VOXEL GEOMETRY FILE\n")
-    f.write(f" 0.0    0.0    0.0              # OFFSET OF THE VOXEL GEOMETRY [cm]\n")
+    f.write(f" {-VOLUME_WIDTH/2.0}    {-VOLUME_WIDTH/2.0}    {-VOLUME_WIDTH/2.0}              # OFFSET OF THE VOXEL GEOMETRY [cm]\n")
     f.write(f" {num_voxels_x}   {num_voxels_y}   {num_voxels_z}                 # NUMBER OF VOXELS: Nx Ny Nz\n")
     f.write(f" {VOXEL_SIZE} {VOXEL_SIZE} {VOXEL_SIZE}           # VOXEL SIZES [cm]\n")
     f.write(f" 1 1 1                          # SIZE OF LOW RESOLUTION VOXELS (binary tree) [powers of two]\n\n")
-    f.write("#[SECTION MATERIAL FILE LIST v.2020-03-03]\n")
-    f.write("material/air__5-120keV.mcgpu.gz                 density=0.0012   voxelId=0\n")
-    f.write("material/muscle__5-120keV.mcgpu.gz              density=1.050    voxelId=7\n")
+    f.write(f" 1 1 1                          # SIZE OF LOW RESOLUTION VOXELS (binary tree) [powers of two]\n\n")
+    
 
 print(f"Input file snippet saved to: {input_snippet_filename}")
 print("\nTo use this phantom in MC-GPU, copy the contents of the snippet file into your input file.")

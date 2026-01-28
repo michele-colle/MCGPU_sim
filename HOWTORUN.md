@@ -1,6 +1,6 @@
 per utilizzare il sw dopo aver compilato con make dalla cartella progetto:
 ```
-make .
+make
 cp MC-GPU_v1.5b example_simulations/ #credo funzioni
 ```
 va lanciata la simulazione

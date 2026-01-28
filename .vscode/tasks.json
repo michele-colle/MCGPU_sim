@@ -1,25 +1,19 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "MC-GPU Simulator (Fast)",
-      "type": "shell",
-      "command": "bash",
-      "args": [
-        "-c",
-        "cd ${workspaceFolder}/example_simulations && ./MC-GPU_v1.5b.x MC-GPU_v1.5b_scattered_phantom_mammo_fast.in | tee output_fast.out"
-      ],
-      "cwd": "${workspaceFolder}",
-      "problemMatcher": [],
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "presentation": {
-        "reveal": "always",
-        "panel": "new"
-      },
-      "isBackground": false
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build DEBUG",
+            "type": "shell",
+            "command": "ls && make clean && make debug",
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        },
+        {
+            "label": "Build RELEASE",
+            "type": "shell",
+            "command": "make clean && make release",
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        }
+    ]
 }

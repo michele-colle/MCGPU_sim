@@ -1,19 +1,37 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "MC-GPU Simulator (Fast) (Bash Debug)",
-      "type": "bashdb",
-      "request": "launch",
-      "program": "${workspaceFolder}/.vscode/run_simulator.sh",
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "terminalKind": "integrated",
-      "pathBash": "/bin/bash",
-      "presentation": {
-        "reveal": "always",
-        "panel": "new"
-      }
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CUDA Debug MCGPU",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/example_simulations/MC-GPU_v1.5b.x",
+            "args": ["cbct_circular.in"],
+            "cwd": "${workspaceFolder}/example_simulations",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build DEBUG",
+            "stopAtEntry": false,
+            "miDebuggerPath": "/usr/local/cuda/bin/cuda-gdb" 
+        },
+        {
+            "name": "CUDA Release MCGPU",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/example_simulations/MC-GPU_v1.5b.x",
+            "args": ["cbct_circular.in"],
+            "cwd": "${workspaceFolder}/example_simulations",
+            "preLaunchTask": "Build RELEASE",
+            "stopAtEntry": false,
+            "miDebuggerPath": "/usr/local/cuda/bin/cuda-gdb" 
+        }
+    ]
 }

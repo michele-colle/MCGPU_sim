@@ -1,4 +1,4 @@
-material/air__5-120keV.mcgpu density=0.0012 voxelId=0
+material/icrp_air.mcgpu density=0.0012 voxelId=0
 material/Pen_base/icrp_water.mcgpu density=0.998210 voxelId=1
 material/Pen_base/icrp_al.mcgpu density=2.698900 voxelId=2
 material/Pen_base/icrp_pmma.mcgpu density=1.190000 voxelId=3

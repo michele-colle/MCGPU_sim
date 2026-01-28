@@ -2,9 +2,9 @@
 # Add these lines to your MC-GPU input file:
 
 #[SECTION VOXELIZED GEOMETRY FILE v.2017-07-26]
-phantom/cylinder_muscle_shifted500x500x500.raw.gz     # VOXEL GEOMETRY FILE
+phantom/cylinder_muscle_shifted900x900x900.raw.gz     # VOXEL GEOMETRY FILE
  0.0    0.0    0.0              # OFFSET OF THE VOXEL GEOMETRY [cm]
- 500   500   500                 # NUMBER OF VOXELS: Nx Ny Nz
+ 900   900   900                 # NUMBER OF VOXELS: Nx Ny Nz
  0.02 0.02 0.02           # VOXEL SIZES [cm]
  1 1 1                          # SIZE OF LOW RESOLUTION VOXELS (binary tree) [powers of two]
 

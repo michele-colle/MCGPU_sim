@@ -54,7 +54,7 @@
 #define  MAX_NUM_PROJECTIONS  720
 
 //! Maximum number of materials allowed in the input file.
-#define  MAX_MATERIALS      15
+#define  MAX_MATERIALS      60
 
 //! Constants values for the Compton and Rayleigh models:
 #define  MAX_SHELLS         50
